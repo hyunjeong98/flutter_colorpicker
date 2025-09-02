@@ -286,32 +286,18 @@ class _ColorPickerState extends State<ColorPicker> {
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(15.0, 5.0, 10.0, 5.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                GestureDetector(
-                  onTap: () => setState(() {
-                    if (widget.onHistoryChanged != null && !colorHistory.contains(currentHsvColor.toColor())) {
-                      colorHistory.add(currentHsvColor.toColor());
-                      widget.onHistoryChanged!(colorHistory);
-                    }
-                  }),
-                  child: ColorIndicator(currentHsvColor),
-                ),
-                Expanded(
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(height: 40.0, width: widget.colorPickerWidth - 75.0, child: sliderByPaletteType()),
-                      if (widget.enableAlpha)
-                        SizedBox(
-                          height: 40.0,
-                          width: widget.colorPickerWidth - 75.0,
-                          child: colorPickerSlider(TrackType.alpha),
-                        ),
-                    ],
-                  ),
-                ),
-              ],
+            child: Expanded(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(height: 40.0, width: widget.colorPickerWidth - 75.0, child: sliderByPaletteType()),
+                  if (widget.enableAlpha)
+                    SizedBox(
+                      height: 40.0,
+                      width: widget.colorPickerWidth - 75.0,
+                      child: colorPickerSlider(TrackType.alpha),
+                    ),
+                ],
+              ),
             ),
           ),
           if (colorHistory.isNotEmpty)
