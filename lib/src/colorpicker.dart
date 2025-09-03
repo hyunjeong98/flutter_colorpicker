@@ -31,6 +31,7 @@ class ColorPicker extends StatefulWidget {
     this.colorHistory,
     this.onHistoryChanged,
     this.sliderImage,
+    this.sliderPadding
   }) : super(key: key);
 
   final Color pickerColor;
@@ -49,6 +50,7 @@ class ColorPicker extends StatefulWidget {
   final BorderRadius pickerAreaBorderRadius;
   final bool hexInputBar;
   final Widget? sliderImage;
+  final EdgeInsets? sliderPadding;
 
   /// Allows setting the color using text input, via [TextEditingController].
   ///
@@ -287,8 +289,9 @@ class _ColorPickerState extends State<ColorPicker> {
             child: colorPicker(),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(15.0, 5.0, 10.0, 5.0),
+            padding: widget.sliderPadding ?? const EdgeInsets.fromLTRB(15.0, 5.0, 10.0, 5.0),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 if (widget.sliderImage != null) widget.sliderImage!,
                 const SizedBox(width: 12),
