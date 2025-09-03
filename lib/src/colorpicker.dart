@@ -286,18 +286,24 @@ class _ColorPickerState extends State<ColorPicker> {
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(15.0, 5.0, 10.0, 5.0),
-            child: Expanded(
-              child: Column(
-                children: <Widget>[
-                  SizedBox(height: 40.0, width: widget.colorPickerWidth - 75.0, child: sliderByPaletteType()),
-                  if (widget.enableAlpha)
-                    SizedBox(
-                      height: 40.0,
-                      width: widget.colorPickerWidth - 75.0,
-                      child: colorPickerSlider(TrackType.alpha),
-                    ),
-                ],
-              ),
+            child: Row(
+              children: [
+                Image.asset('images/palette.png', width: 32, height: 32),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    children: <Widget>[
+                      SizedBox(height: 40.0, width: widget.colorPickerWidth - 75.0, child: sliderByPaletteType()),
+                      if (widget.enableAlpha)
+                        SizedBox(
+                          height: 40.0,
+                          width: widget.colorPickerWidth - 75.0,
+                          child: colorPickerSlider(TrackType.alpha),
+                        ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
           if (colorHistory.isNotEmpty)
