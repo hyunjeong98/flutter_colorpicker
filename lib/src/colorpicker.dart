@@ -30,6 +30,7 @@ class ColorPicker extends StatefulWidget {
     this.hexInputController,
     this.colorHistory,
     this.onHistoryChanged,
+    this.sliderImage,
   }) : super(key: key);
 
   final Color pickerColor;
@@ -47,6 +48,7 @@ class ColorPicker extends StatefulWidget {
   final double pickerAreaHeightPercent;
   final BorderRadius pickerAreaBorderRadius;
   final bool hexInputBar;
+  final Widget? sliderImage;
 
   /// Allows setting the color using text input, via [TextEditingController].
   ///
@@ -288,7 +290,7 @@ class _ColorPickerState extends State<ColorPicker> {
             padding: const EdgeInsets.fromLTRB(15.0, 5.0, 10.0, 5.0),
             child: Row(
               children: [
-                Image.asset('images/palette.png', width: 32, height: 32),
+                if (widget.sliderImage != null) widget.sliderImage!,
                 const SizedBox(width: 12),
                 Expanded(
                   child: Column(
