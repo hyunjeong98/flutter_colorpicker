@@ -165,11 +165,12 @@ class ColorPicker extends StatefulWidget {
 }
 
 class _ColorPickerState extends State<ColorPicker> {
-  HSVColor currentHsvColor = const HSVColor.fromAHSV(0.0, 0.0, 0.0, 0.0);
+  late HSVColor currentHsvColor;
   List<Color> colorHistory = [];
 
   @override
   void initState() {
+    super.initState();
     currentHsvColor =
         (widget.pickerHsvColor != null) ? widget.pickerHsvColor as HSVColor : HSVColor.fromColor(widget.pickerColor);
     // If there's no initial text in `hexInputController`,
@@ -185,7 +186,6 @@ class _ColorPickerState extends State<ColorPicker> {
     if (widget.colorHistory != null && widget.onHistoryChanged != null) {
       colorHistory = widget.colorHistory ?? [];
     }
-    super.initState();
   }
 
   @override
